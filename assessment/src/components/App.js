@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import Banner from "./Banner";
+import Signup from "./Signup";
 
 class App extends Component {
   render() {
-    return <div className="segment ui">App</div>;
+    return (
+      <div>
+        <Banner />
+        <Signup />
+      </div>
+    );
   }
 }
 
