@@ -6,7 +6,12 @@ const TextField = props => {
       <label>
         <h4>{props.placeholder}</h4>
       </label>
-      <input type="text" name={props.name} placeholder={props.placeholder} />
+      <input
+        type="text"
+        name={props.name}
+        onChange={props.onChange}
+        placeholder={props.placeholder}
+      />
     </div>
   );
 };

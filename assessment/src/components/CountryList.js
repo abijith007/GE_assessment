@@ -2,12 +2,19 @@ import React, { Component } from "react";
 
 class CountryList extends Component {
   state = {};
+
   render() {
     return (
       <div className="four fields">
         <div className="field">
           <label>Country</label>
-          <select className="ui fluid dropdown" id="country" name="country">
+          <select
+            className="ui fluid dropdown"
+            id="country"
+            name="country"
+            onChange={this.props.saveInput}
+          >
+            <option hidden> </option>
             <option value="Afganistan">Afghanistan</option>
             <option value="Albania">Albania</option>
             <option value="Algeria">Algeria</option>
