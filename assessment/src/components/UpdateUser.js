@@ -3,7 +3,11 @@ import React, { Component } from "react";
 class UpdateUser extends Component {
   state = {};
   render() {
-    return <div> Update User</div>;
+    return (
+      <div>
+        <h1>Update User</h1>
+      </div>
+    );
   }
 }
 

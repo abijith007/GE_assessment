@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="ui top menu inverted segment">
+    <div className="ui top menu inverted ">
       <div style={{ marginLeft: "10px" }}>
         <img src="ge.png" height="65" width="180" alt="GE_logo" />
       </div>

@@ -5,8 +5,6 @@ import PersonalInfo from "./PersonalInfo";
 import { connect } from "react-redux";
 import { setUserData } from "../actions";
 class Signup extends Component {
-  state = {};
-
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
@@ -17,17 +15,16 @@ class Signup extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   };
 
   render() {
     return (
-      <div className="ui container segments">
+      <div className="ui container segments" style={{ marginTop: "10%" }}>
         <div className="ui inverted segment blue">
           <h2 className="heading">Signup</h2>
         </div>
         <div className="ui segment">
-          <form action="#" className="ui form">
+          <form onSubmit={this.handleSubmit} className="ui form">
             <PersonalInfo saveInput={this.saveInput} />
             <CountryList saveInput={this.saveInput} />
             <div className="ui">
@@ -35,7 +32,6 @@ class Signup extends Component {
                 type="submit"
                 className="ui right floated primary button"
                 value="Submit"
-                onClick={this.handleSubmit}
               />
               <br />
               <br />

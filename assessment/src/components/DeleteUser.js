@@ -3,7 +3,11 @@ import React, { Component } from "react";
 class DeleteUser extends Component {
   state = {};
   render() {
-    return <div>Delete User</div>;
+    return (
+      <div>
+        <h1>Delete User</h1>
+      </div>
+    );
   }
 }
 

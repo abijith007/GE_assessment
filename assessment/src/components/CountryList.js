@@ -13,6 +13,7 @@ class CountryList extends Component {
             id="country"
             name="country"
             onChange={this.props.saveInput}
+            required
           >
             <option hidden> </option>
             <option value="Afganistan">Afghanistan</option>
