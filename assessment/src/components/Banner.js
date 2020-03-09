@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -7,18 +8,18 @@ const Banner = () => {
         <img src="ge.png" height="65" width="180" alt="GE_logo" />
       </div>
       <div className="ui right inverted secondary menu">
-        <a className="item" href="/create">
+        <Link className="item" to="/create">
           Create
-        </a>
-        <a className="item" href="/retrieve">
+        </Link>
+        <Link className="item" to="/retrieve">
           Retrieve
-        </a>
-        <a className="item" href="/update">
+        </Link>
+        <Link className="item" to="/update">
           Update
-        </a>
-        <a className="item" href="/delete">
+        </Link>
+        <Link className="item" to="/delete">
           Delete
-        </a>
+        </Link>
       </div>
     </div>
   );
