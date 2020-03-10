@@ -66,6 +66,20 @@ class PersonalInfo extends Component {
             onChange={this.props.saveInput}
           />
         </div>
+        <div className="three fields">
+          <TextField
+            label="User Name"
+            name="user_name"
+            placeholder="User Name"
+            onChange={this.props.saveInput}
+          />
+          <TextField
+            label="Password"
+            name="password"
+            placeholder="Password"
+            onChange={this.props.saveInput}
+          />
+        </div>
       </div>
     );
   }

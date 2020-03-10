@@ -19,7 +19,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="ui container segments" style={{ marginTop: "10%" }}>
+      <div className="ui container segments" style={{ marginTop: "3%" }}>
         <div className="ui inverted segment blue">
           <h2 className="heading">Signup</h2>
         </div>
