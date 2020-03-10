@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 export const CREATE_USER_DATA = "CREATE_USER_DATA";
 export const LOGIN_DATA = "LOGIN_DATA";
 
@@ -9,8 +11,14 @@ export function setUserData(userData) {
 }
 
 export function setLoginData(loginData) {
-  return {
-    type: LOGIN_DATA,
-    payload: loginData
+  return dispatch => {
+    Axios.get(
+      "http://localhost:4000/users/" +
+        loginData.username +
+        "/" +
+        loginData.password
+    ).then(res => {
+      dispatch({ type: LOGIN_DATA, payload: res.data });
+    });
   };
 }
