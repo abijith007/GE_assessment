@@ -1,11 +1,24 @@
 import React, { Component } from "react";
 import TextField from "./TextField";
 import { connect } from "react-redux";
-
+import { deleteUserData } from "../actions";
 
 
 class DeleteUser extends Component {
-  state = {};
+  
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state);
+    this.props.deleteUserData(this.state)
+  };
+
+  saveInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+    console.log(this.state)
+  };
+
   render() {
     return (
       <div style={{ marginTop: "13%" }}>
@@ -53,4 +66,8 @@ class DeleteUser extends Component {
   }
 }
 
-export default DeleteUser;
+const mapDispatchToProps = dispatch => ({
+  deleteUserData: userData => dispatch(deleteUserData(userData))
+});
+
+export default connect(null, mapDispatchToProps)(DeleteUser);

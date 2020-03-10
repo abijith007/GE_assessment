@@ -51,10 +51,10 @@ app.get("/users/:username/:password", (req, res) => {
 });
 
 //Delete an user
-app.delete("/users/:id", (req, res) => {
+app.delete("/users/remove/:username/:password", (req, res) => {
   mysqlConnection.query(
-    "DELETE FROM users WHERE id = ?",
-    [req.params.id],
+    "DELETE FROM users WHERE username = ? AND password = ?",
+    [req.params.username,req.params.password],
     (err, rows, fields) => {
       if (!err) res.send("Deleted successfully.");
       else console.log(err);

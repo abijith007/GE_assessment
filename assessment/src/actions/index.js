@@ -22,3 +22,17 @@ export function setLoginData(loginData) {
     });
   };
 }
+
+export function deleteUserData(userData) {
+  return dispatch => {
+    Axios.get(
+      "http://localhost:4000/users/remove/" +
+        userData.username +
+        "/" +
+        userData.password
+    ).then(res => {
+      alert("User has been deleted")
+    });
+  };
+  
+}

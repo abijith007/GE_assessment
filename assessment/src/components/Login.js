@@ -14,7 +14,6 @@ class Login extends Component {
     this.props.setLoginData(this.state);
   };
 
-  componentDidMount() {}
 
   render() {
     return (
