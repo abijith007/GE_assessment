@@ -1,8 +1,22 @@
 import React, { Component } from "react";
 import CountryList from "./CountryList";
 import PersonalInfo from "./PersonalInfo";
+import { connect } from "react-redux";
+import { updateUserData } from "../actions";
 
 class UpdateUser extends Component {
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state);
+    this.props.updateUserData(this.state);
+  };
+
+  saveInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   state = {};
   render() {
     return (
@@ -31,4 +45,8 @@ class UpdateUser extends Component {
   }
 }
 
-export default UpdateUser;
+const mapDispatchToProps = dispatch => ({
+  updateUserData: userData => dispatch(updateUserData(userData))
+});
+
+export default connect(null, mapDispatchToProps)(UpdateUser);

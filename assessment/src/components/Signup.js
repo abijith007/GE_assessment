@@ -9,25 +9,6 @@ class Signup extends Component {
     event.preventDefault();
     console.log(this.state);
     this.props.createUserData(this.state);
-
-    /*
-    const userObj={
-      "id":0,
-      "username": this.state.user_name,
-      "password": this.state.password,
-      "email": this.state.email
-
-    };
-    Axios.post('http://localhost:4000/users',userObj)
-    .then((res=>{
-      console.log(res.data);
-    }))
-    .catch((error=>{
-      console.log(error);
-
-    }))
-
-  */
   };
 
   saveInput = e => {

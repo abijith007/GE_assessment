@@ -2,11 +2,13 @@ import Axios from "axios";
 
 export const CREATE_USER_DATA = "CREATE_USER_DATA";
 export const LOGIN_DATA = "LOGIN_DATA";
+export const UPDATE_USER_DATA = "UPDATE_USER_DATA";
 
 export function createUserData(userData) {
   return dispatch => {
     console.log(userData);
-    Axios.get("http://localhost:4000/users/", userData).then(res => {
+    userData.id = 0;
+    Axios.post("http://localhost:4000/users/", userData).then(res => {
       alert("User has been Successfully Added");
     });
   };
@@ -42,5 +44,27 @@ export function deleteUserData(userData) {
           console.log(err);
         });
     }
+  };
+}
+
+export function updateUserData(userData) {
+  return dispatch => {
+    Axios.get(
+      "http://localhost:4000/users/" +
+        userData.username +
+        "/" +
+        userData.password
+    ).then(res => {
+      userData.id = res.data.id;
+      console.log("id", res);
+      Axios.put("http://localhost:4000/users", userData)
+        .then(res => {
+          console.log(res.data);
+          dispatch({ type: UPDATE_USER_DATA, payload: userData });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    });
   };
 }
