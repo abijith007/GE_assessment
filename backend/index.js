@@ -5,7 +5,7 @@ var app = express();
 const bodyparser = require("body-parser");
 
 app.use(cors());
-
+app.use(bodyparser.json());
 var mysqlConnection = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -66,12 +66,9 @@ app.delete("/users/remove/:username/:password", (req, res) => {
 app.post("/users", (req, res) => {
   let usr = req.body;
   var sql =
-    "SET @id = ?;SET @name = ?;SET @password = ?;SET @email = ?; \
-    CALL userAddOrEdit(@id,@name,@password,@email);";
-  mysqlConnection.query(
-    sql,
-    [usr.id, usr.name, usr.password, usr.email],
-    (err, rows, fields) => {
+    "SET @id = ?;SET @username = ?;SET @password = ?;SET @email = ?; \
+    CALL userAddOrEdit(@id,@username,@password,@email);";
+  mysqlConnection.query(sql,[usr.id, usr.username, usr.password, usr.email],(err, rows, fields) => {
       if (!err)
         rows.forEach(element => {
           if (element.constructor == Array)
@@ -79,18 +76,18 @@ app.post("/users", (req, res) => {
         });
       else console.log(err);
     }
-  );
+  )
 });
 
 //Update an users
 app.put("/users", (req, res) => {
   let usr = req.body;
   var sql =
-    "SET @id = ?;SET @name = ?;SET @password = ?;SET @email = ?; \
-    CALL userAddOrEdit(@id,@name,@password,@email);";
+    "SET @id = ?;SET @username = ?;SET @password = ?;SET @email = ?; \
+    CALL userAddOrEdit(@id,@username,@password,@email);";
   mysqlConnection.query(
     sql,
-    [usr.id, usr.name, usr.password, usr.email],
+    [usr.id, usr.username, usr.password, usr.email],
     (err, rows, fields) => {
       if (!err) res.send("Updated successfully!");
       else console.log(err);

@@ -1,14 +1,29 @@
 import React, { Component } from "react";
-
 import CountryList from "./CountryList";
 import PersonalInfo from "./PersonalInfo";
 import { connect } from "react-redux";
 import { setUserData } from "../actions";
+import Axios from "axios";
 class Signup extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
     this.props.setUserData(this.state);
+    const userObj={
+      "id":0,
+      "username": this.state.user_name,
+      "password": this.state.password,
+      "email": this.state.email
+
+    };
+    Axios.post('http://localhost:4000/users',userObj)
+    .then((res=>{
+      console.log(res.data);
+    }))
+    .catch((error=>{
+      console.log(error);
+
+    }))
   };
 
   saveInput = e => {
