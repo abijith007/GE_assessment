@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import CountryList from "./CountryList";
 import PersonalInfo from "./PersonalInfo";
 import { connect } from "react-redux";
-import { setUserData } from "../actions";
-import Axios from "axios";
+import { createUserData } from "../actions";
+
 class Signup extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
-    this.props.setUserData(this.state);
+    this.props.createUserData(this.state);
+
+    /*
     const userObj={
       "id":0,
       "username": this.state.user_name,
@@ -24,6 +26,8 @@ class Signup extends Component {
       console.log(error);
 
     }))
+
+  */
   };
 
   saveInput = e => {
@@ -59,7 +63,7 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setUserData: userData => dispatch(setUserData(userData))
+  createUserData: userData => dispatch(createUserData(userData))
 });
 
 export default connect(null, mapDispatchToProps)(Signup);

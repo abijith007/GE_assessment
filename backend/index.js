@@ -54,7 +54,7 @@ app.get("/users/:username/:password", (req, res) => {
 app.delete("/users/remove/:username/:password", (req, res) => {
   mysqlConnection.query(
     "DELETE FROM users WHERE username = ? AND password = ?",
-    [req.params.username,req.params.password],
+    [req.params.username, req.params.password],
     (err, rows, fields) => {
       if (!err) res.send("Deleted successfully.");
       else console.log(err);
@@ -68,7 +68,10 @@ app.post("/users", (req, res) => {
   var sql =
     "SET @id = ?;SET @username = ?;SET @password = ?;SET @email = ?; \
     CALL userAddOrEdit(@id,@username,@password,@email);";
-  mysqlConnection.query(sql,[usr.id, usr.username, usr.password, usr.email],(err, rows, fields) => {
+  mysqlConnection.query(
+    sql,
+    [usr.id, usr.username, usr.password, usr.email],
+    (err, rows, fields) => {
       if (!err)
         rows.forEach(element => {
           if (element.constructor == Array)
@@ -76,7 +79,7 @@ app.post("/users", (req, res) => {
         });
       else console.log(err);
     }
-  )
+  );
 });
 
 //Update an users

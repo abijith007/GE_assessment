@@ -69,7 +69,7 @@ class PersonalInfo extends Component {
         <div className="three fields">
           <TextField
             label="User Name"
-            name="user_name"
+            name="username"
             placeholder="User Name"
             onChange={this.props.saveInput}
           />

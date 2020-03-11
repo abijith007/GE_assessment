@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CountryList from "./CountryList";
 import PersonalInfo from "./PersonalInfo";
-import { connect } from "react-redux";
 
 class UpdateUser extends Component {
   state = {};

@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
+  `username` varchar(30) DEFAULT NULL,
   `password` varchar(10) NOT NULL,
   `email` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'test','test','test@test.com'),(2,'xyz','xyz','xyz@xyz.com'),(3,'def','def','def@def.com');
+INSERT INTO `users` VALUES (1,'test','test','test@test.com'),(2,'abc','abc','abc@abc.com'),(3,'def','def','def@def.com'),(4,'mno','mno','mno@mno.com'),(6,'ijk','ijk','ijk@ijk.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,13 +54,13 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`` PROCEDURE `userAddOrEdit`(IN  _id INT, IN  _name varchar(30), IN  _password varchar(10),  IN  _email varchar(30) )
+CREATE DEFINER=`` PROCEDURE `userAddOrEdit`(IN  _id INT, IN  _username varchar(30), IN  _password varchar(10),  IN  _email varchar(30) )
 BEGIN
     IF _id=0 THEN
-        insert into users (name,password,email) values(_name,_password,_email);
+        insert into users (username,password,email) values(_username,_password,_email);
         SET _id=LAST_INSERT_ID();
     ELSE
-        UPDATE users SET name=_name,password=_password,email=_email where id=_id;
+        UPDATE users SET username=_username,password=_password,email=_email where id=_id;
     END IF;
     SELECT _id as 'id';
 END ;;
@@ -79,4 +79,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-09 18:20:20
+-- Dump completed on 2020-03-11 18:05:41
